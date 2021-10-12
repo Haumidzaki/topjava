@@ -4,22 +4,19 @@
 
 <html lang="ru">
 <style>
-    div {
-
-    }
     table {
         border-collapse: collapse;
         /*убираем пустые промежутки между ячейками*/
         border: 1px solid grey;
         /*устанавливаем для таблицы внешнюю границу серого цвета толщиной 1px*/
-
+        max-width: 60%;
+        width: 30%;
     }
 
     th, td {
-        align-items: center;
         border: 1px solid grey;
-        padding: 5px 7px;
     }
+
 </style>
 <head>
     <title>Meals</title>
@@ -30,21 +27,20 @@
 <h2>Meals</h2>
 
 <div>
-<c:forEach items="${mealToList}" var="meal" >
-
     <table>
         <tr>
             <th>Date</th>
             <th>Description</th>
             <th>Calories</th>
-        </tr> <!--ряд с ячейками заголовков-->
-        <tr>
-            <td>${meal.dateTime}</td>
-            <td>${meal.description}</td>
-            <td>${meal.calories}</td>
-        </tr> <!--ряд с ячейками тела таблицы-->
+        </tr>
+        <c:forEach items="${mealToList}" var="meal">
+            <tr style="color: ${meal.excess ? 'Red' : 'Green'}">
+                <td>${meal.dateTime}</td>
+                <td>${meal.description}</td>
+                <td>${meal.calories}</td>
+            </tr>
+        </c:forEach>
     </table>
-</c:forEach>
-    </div>
+</div>
 </body>
 </html>
